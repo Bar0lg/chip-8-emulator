@@ -11,7 +11,7 @@ DIRS := src include data build build/objs
 
 
 exe: $(OBJFILES) | $(DIRS)
-	@$(CC) -o build/$(NAME) $^ $(CFLAGS) $(DEBFLAGS)
+	$(CC) -o build/$(NAME) $^ $(CFLAGS) $(DEBFLAGS) $(CLIBS)
 	@echo "$(CFLAGS) $(DEBFLAGS)" | sed 's/ /\n/g' > compile_flags.txt
 	@cp -r data build/
 
@@ -23,7 +23,7 @@ run:exe
 .SECONDEXPANSION:
 $(OBJFILES): $$(patsubst %.o,%.c, $$(addprefix src/,$$(shell echo "$$@" | cut -d'/' -f 3-)))
 	@mkdir -p $(dir $@)
-	@$(CC) -c -o $@ $^ $(CFLAGS) $(DEBFLAGS)
+	$(CC) -c -o $@ $^ $(CFLAGS) $(DEBFLAGS)
 
 clean:
 	rm -rf build/
