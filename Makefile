@@ -1,8 +1,8 @@
 CC := clang
 CFLAGS := -Wall -Wextra -Iinclude/
 DEBFLAGS := -fsanitize=address,undefined -g
-CLIBS := -lm
-NAME := exe
+CLIBS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+NAME := chip8
 
 
 CFILES := $(shell find src -type f -name "*.c" | cut -d'/' -f 2-)
