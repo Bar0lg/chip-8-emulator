@@ -1,4 +1,4 @@
-CC := clang
+CC := gcc
 CFLAGS := -Wall -Wextra -Iinclude/
 DEBFLAGS := -fsanitize=address,undefined -g
 CLIBS := -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
