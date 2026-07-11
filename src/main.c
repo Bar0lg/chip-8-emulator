@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
   el_VM.MEM = malloc(NB_BYTES);
   load_file(argv[1]);
   el_VM.PC = START_PROG;
+  el_VM.SP = 0;
   InitWindow(SCREEN_WIDTH * SIZE_PIXEL, SCREEN_HEIGHT * SIZE_PIXEL, "Chip-8");
   SetTargetFPS(TIMER_RATE);
   while (!WindowShouldClose()) {

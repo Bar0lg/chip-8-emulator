@@ -12,6 +12,7 @@ enum INS {
   INS_SEI,
   INS_SNEI,
   INS_SE,
+  INS_LDXI,
   INS_LDX,
   INS_OR,
   INS_AND,
