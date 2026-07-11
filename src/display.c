@@ -3,7 +3,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-bool **screen_pixels = NULL;
+
+#include "vm.h"
 
 void init_screen() {
   bool **res = malloc(SCREEN_HEIGHT * sizeof(bool *));
@@ -11,13 +12,13 @@ void init_screen() {
     bool *tmp = calloc(SCREEN_WIDTH, sizeof(bool));
     res[i] = tmp;
   }
-  screen_pixels = res;
+  el_VM.SCREEN = res;
 }
 
 void draw_screen() {
   for (int i = 0; i < SCREEN_HEIGHT; i++) {
     for (int j = 0; j < SCREEN_WIDTH; j++) {
-      if (screen_pixels[i][j]) {
+      if (el_VM.SCREEN[i][j]) {
         DrawRectangle(j * SIZE_PIXEL, i * SIZE_PIXEL, SIZE_PIXEL, SIZE_PIXEL,
                       WHITE);
       } else {
@@ -30,7 +31,7 @@ void draw_screen() {
 
 void free_screen() {
   for (int i = 0; i < SCREEN_HEIGHT; i++) {
-    free(screen_pixels[i]);
+    free(el_VM.SCREEN[i]);
   }
-  free(screen_pixels);
+  free(el_VM.SCREEN);
 }
